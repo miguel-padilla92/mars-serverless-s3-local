@@ -1,15 +1,20 @@
 {
-    "name": "serverless-s3-local-project",
-    "private": true,
-    "dependencies": {},
+    "name": "mars-serverless-s3-local",
+    "version": "1.0.0",
+    "author": {
+        "name": "Miguel Padilla",
+        "email": "miguel.padilla@valtech.com",
+        "url": "https://github.com/miguel-padilla92/mars-serverless-s3-local"
+    },
     "devDependencies": {
         "@aws-sdk/client-s3": "3.359.0",
         "eslint": "8.43.0",
         "eslint-config-airbnb-base": "15.0.0",
         "eslint-plugin-import": "2.27.5",
-        "serverless": "3.32.2",
         "got": "12.6.1",
-        "jest": "29.5.0"
+        "jest": "29.5.0",
+        "mars-s3rver": "^1.0.0",
+        "serverless": "3.32.2"
     },
     "workspaces": [
         "serverless-s3-local",

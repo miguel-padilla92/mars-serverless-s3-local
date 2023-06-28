@@ -1,4 +1,4 @@
-const S3rver = require("s3rver");
+const S3rver = require("mars-s3rver");
 const fs = require("fs-extra"); // Using fs-extra to ensure destination directory exist
 const shell = require("shelljs");
 const path = require("path");
@@ -237,15 +237,15 @@ class ServerlessS3Local {
       const configs = [
         cors
           ? fs.readFileSync(
-              path.resolve(this.serverless.config.servicePath, cors),
-              "utf8"
-            )
+            path.resolve(this.serverless.config.servicePath, cors),
+            "utf8"
+          )
           : null,
         website
           ? fs.readFileSync(
-              path.resolve(this.serverless.config.servicePath, website),
-              "utf8"
-            )
+            path.resolve(this.serverless.config.servicePath, website),
+            "utf8"
+          )
           : null,
       ].filter((x) => !!x);
 
@@ -419,7 +419,7 @@ class ServerlessS3Local {
 
     this.service.getAllFunctions().forEach((functionKey) => {
       const functionDefinition = this.service.getFunction(functionKey);
-      lambda.create([{functionKey, functionDefinition}]); // eslint-disable-line no-underscore-dangle
+      lambda.create([{ functionKey, functionDefinition }]); // eslint-disable-line no-underscore-dangle
 
       const func = async (s3Event) => {
         const baseEnvironment = {
@@ -525,13 +525,13 @@ class ServerlessS3Local {
   hasPlugin(pluginName, strict = false) {
     return this.service && this.service.plugins && this.service.plugins.modules
       ? this.service.plugins.modules.some((module) => {
-          const index = module.indexOf(pluginName);
-          return strict ? index === 0 : index >= 0;
-        })
+        const index = module.indexOf(pluginName);
+        return strict ? index === 0 : index >= 0;
+      })
       : this.service.plugins.some((plugin) => {
-          const index = plugin.indexOf(pluginName);
-          return strict ? index === 0 : index >= 0;
-        });
+        const index = plugin.indexOf(pluginName);
+        return strict ? index === 0 : index >= 0;
+      });
   }
 
   hasAdditionalStacksPlugin() {
